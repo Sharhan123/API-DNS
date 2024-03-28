@@ -6,12 +6,12 @@ const session = require('express-session');
 const userRoute = require('./routers/userRouter')
 const cors =require('cors')
 
+require('dotenv').config();
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors())
-require('dotenv').config();
+app.use(cors({origin:process.env.UI}))
 
 app.use('/api/user',userRoute)
 
