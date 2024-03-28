@@ -13,7 +13,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors({
-    origin: '*'
+    origin:process.env.CORS_URL,
+    credentials:true
   }));
   
   
