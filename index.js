@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-const allowedOrigins = [process.env.UI];
+const allowedOrigins = ['https://dns-manager-ui.vercel.app/'];
 
 app.use(cors({
   origin: function (origin, callback) {
