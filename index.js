@@ -11,7 +11,11 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors())
+app.use(cors({
+    origin: function(origin, callback) {
+      return callback(null, true);
+    }
+  }));
 
 app.use('/api/user',userRoute)
 app.get('/',(req,res)=>{
