@@ -15,14 +15,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 const allowedOrigins = ['https://dns-manager-ui.vercel.app/'];
 
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
+    origin: function(origin, callback) {
       callback(null, true); 
-    } else {
-      callback(new Error('Not allowed by CORS')); 
     }
-  }
-}));
+  }));
+  
   
 
 app.use('/api/user',userRoute)
