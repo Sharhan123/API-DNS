@@ -21,6 +21,6 @@ app.use(cors({
 
 app.use('/api/user',userRoute)
 app.get('/',(req,res)=>{
-    res.json({messge:'Hello'})
+    res.json({messge:'hiii'})
 })
 module.exports = app;
