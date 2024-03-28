@@ -1,6 +1,5 @@
 const AWS = require('../aws')
 const userData = require('../models/userSchema')
-const bcrypt = require('bcrypt')
 const domainData = require('../models/domainSchema')
 const { generateToken, verifyToken } = require('../jwt')
 const domainSchema = require('../models/domainSchema')
@@ -19,15 +18,12 @@ module.exports = {
 
                 if (pass === cpass) {
 
-                    const hashedPassword = await bcrypt.hash(pass, 10);
-
-
 
                     const data = new userData({
                         firstname: fName,
                         lastname: lName,
                         email: email,
-                        password: hashedPassword
+                        password: pass
                     })
 
                     const resData = await data.save()
@@ -63,9 +59,9 @@ module.exports = {
             const user = await userData.findOne({ email: email })
 
             if (user) {
-                const match = await bcrypt.compare(pass, user.password)
+                
 
-                if (match) {
+                if (pass === user.password) {
                     const payload = {
                         fname: user.firstname,
                         lname: user.lastname,
