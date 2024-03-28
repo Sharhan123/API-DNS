@@ -12,9 +12,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-    app.use(cors({
-        origin: 'http://localhost:5173'
-      }));
+app.use(cors({
+    origin: '*'
+  }));
+  
   
 
 app.use('/api/user',userRoute)
